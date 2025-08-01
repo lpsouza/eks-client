@@ -1,0 +1,25 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = '$kubernetes$directory$character '
+
+add_newline = true
+
+[character]
+success_symbol = '[#](bold green)'
+error_symbol = '[#](bold red)'
+format = '[$symbol]($style)'
+
+[directory]
+disabled = false
+truncate_to_repo = false
+format = '[$path]($style)'
+
+[package]
+disabled = true
+
+[container]
+disabled = true
+
+[kubernetes]
+disabled = false
+format = '[$context]($style) '
