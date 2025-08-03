@@ -26,9 +26,6 @@ jobs:
             - name: Check out the repo
               uses: actions/checkout@v2
 
-            - name: Update CA certificates
-              run: sudo apt-get update && sudo apt-get install -y ca-certificates
-
             - name: Set up QEMU
               uses: docker/setup-qemu-action@v2
 

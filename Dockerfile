@@ -29,15 +29,15 @@ RUN set -e; \
     else \
         AWS_CLI_URL="https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"; \
     fi && \
-    curl -sSL "$AWS_CLI_URL" -o "/tmp/awscli-exe-linux.zip" && \
+    curl -ksSL "$AWS_CLI_URL" -o "/tmp/awscli-exe-linux.zip" && \
     unzip /tmp/awscli-exe-linux.zip -d /tmp && \
     /tmp/aws/install --update && \
     rm -rf /tmp/awscli-exe-linux.zip /tmp/aws && \
-    curl -sSL -o kubectl "https://dl.k8s.io/release/$(curl -sSL https://dl.k8s.io/release/stable.txt)/bin/linux/${ARCH}/kubectl" && \
+    curl -ksSL -o kubectl "https://dl.k8s.io/release/$(curl -ksSL https://dl.k8s.io/release/stable.txt)/bin/linux/${ARCH}/kubectl" && \
     install -m 0755 kubectl /usr/local/bin/kubectl && \
     rm kubectl && \
-    HELM_VERSION=$(curl -sSL https://api.github.com/repos/helm/helm/releases/latest | jq -r .tag_name) && \
-    curl -sSL -o helm.tar.gz "https://get.helm.sh/helm-${HELM_VERSION}-linux-${ARCH}.tar.gz" && \
+    HELM_VERSION=$(curl -ksSL https://api.github.com/repos/helm/helm/releases/latest | jq -r .tag_name) && \
+    curl -ksSL -o helm.tar.gz "https://get.helm.sh/helm-${HELM_VERSION}-linux-${ARCH}.tar.gz" && \
     tar -zxvf helm.tar.gz && \
     mv linux-${ARCH}/helm /usr/local/bin/helm && \
     chmod +x /usr/local/bin/helm && \
